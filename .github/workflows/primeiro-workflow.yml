@@ -1,0 +1,23 @@
+name: Primeiro Workflow no Push
+
+on:                               # (1) EVENTOS QUE DISPARAM O WORKFLOW
+  push:                           # (2) Dispara em qualquer push
+    branches: [ main ]            # (3) Apenas quando o push for na branch main
+  pull_request:
+    branches: [ main ]
+
+jobs:                             # (4) LISTA DE JOBS
+  run-simple-script:              # (5) Nome do job
+    runs-on: ubuntu-latest        # (6) Runner onde o job executa (Ubuntu Linux)
+
+    steps:                        # (7) PASSOS DO JOB
+      - name: Checar código       # (8) Passo 1: faz checkout do repositório
+        uses: actions/checkout@v4 # (9) Action pronta do GitHub para baixar o código
+
+      - name: Mensagem simples    # (10) Passo 2: roda um comando shell
+        run: echo "Olá, GitHub Actions!"
+
+      - name: Rodar script        # (11) Passo 3: executar seu script
+        run: |
+          chmod +x ./script.sh    # (12) Dá permissão de execução
+          ./script.sh             # (13) Executa seu script
