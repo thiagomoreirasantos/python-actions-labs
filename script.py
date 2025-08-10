@@ -12,7 +12,7 @@ from datetime import datetime, timezone
 import json
 
 def main() -> None:
-    repo = os.getenv("GITHUB_REPOSITORY", "desconhecido")
+    repo = os.getenv("GITHUB_REPOSITORY", "https://github.com/thiagomoreirasantos/python-actions-labs")
     sha = (os.getenv("GITHUB_SHA") or "")[:7]
     ref = os.getenv("GITHUB_REF_NAME") or os.getenv("GITHUB_REF", "")
     run_id = os.getenv("GITHUB_RUN_ID", "")
