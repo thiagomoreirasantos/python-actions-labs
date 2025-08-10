@@ -17,7 +17,11 @@ jobs:                             # (4) LISTA DE JOBS
       - name: Mensagem simples    # (10) Passo 2: roda um comando shell
         run: echo "Olá, GitHub Actions!"
 
-      - name: Rodar script        # (11) Passo 3: executar seu script
-        run: |
-          chmod +x ./script.sh    # (12) Dá permissão de execução
-          ./script.sh             # (13) Executa seu script
+      - name: Rodar script Python       # (11) Passo 3: executar seu script
+        run: python3 script.py    # (12) Dá permissão de execução         
+
+      - name: Publicar artefato (run_info)
+        uses: actions/upload-artifact@v4
+        with:
+          name: run-info
+          path: output/run_info.json
